@@ -1,0 +1,21 @@
+name: calzacaribe-sitio-web
+
+services:
+  sitio-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_TIENDA_URL: ${VITE_TIENDA_URL:-http://localhost:5174}
+    image: calzacaribe-sitio-web
+    container_name: calzacaribe-sitio-web
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - default
+      - coolify
+
+networks:
+  coolify:
+    external: true

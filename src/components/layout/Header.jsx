@@ -1,12 +1,13 @@
 ﻿import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ShoppingBag } from 'lucide-react'
+import { TIENDA_URL } from '../../config'
 
 const NAV_LINKS = [
-  { label: 'Inicio',       to: '/' },
-  { label: 'Nosotros',     to: '/#nosotros' },
-  { label: 'Categorías',   to: '/#categorias' },
-  { label: 'Contacto',     to: '/#contacto' },
+  { label: 'Inicio', to: '/' },
+  { label: 'Nosotros', to: '/#nosotros' },
+  { label: 'Estilo', to: '/#estilo' },
+  { label: 'Contacto', to: '/#contacto' },
 ]
 
 export default function Header() {
@@ -59,10 +60,10 @@ export default function Header() {
         {/* CTA desktop */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="https://pruebacalzacaribe.netlify.app"
+            href={TIENDA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-bold text-sm px-4 py-2 rounded-xl transition-colors"
+            className="flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-bold text-sm px-4 py-2 transition-colors"
           >
             <ShoppingBag size={15} />
             Ir a la tienda
@@ -93,11 +94,11 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="https://pruebacalzacaribe.netlify.app"
+            href={TIENDA_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-3 flex items-center justify-center gap-2 bg-accent text-white font-bold text-sm px-4 py-3 rounded-xl"
+            className="mt-3 flex items-center justify-center gap-2 bg-accent text-white font-bold text-sm px-4 py-3"
           >
             <ShoppingBag size={15} />
             Ir a la tienda

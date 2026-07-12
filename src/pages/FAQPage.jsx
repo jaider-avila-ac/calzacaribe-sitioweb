@@ -77,24 +77,24 @@ export default function FAQPage() {
         {FAQS.map(({ category, items }) => (
           <div key={category}>
             {/* Etiqueta de categoría: chip negro con texto blanco */}
-            <div className="inline-flex items-center bg-black text-white text-xs font-black px-3 py-1 rounded-full mb-3">
+            <div className="inline-flex items-center bg-black text-white text-xs font-black px-3 py-1 mb-3">
               {category}
             </div>
-            <div className="border-2 border-black rounded-2xl px-5">
+            <div className="border-2 border-black px-5">
               {items.map(({ q, a }) => <FAQItem key={q} q={q} a={a} />)}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-10 bg-black rounded-2xl p-6 text-center">
+      <div className="mt-10 bg-black p-6 text-center">
         <p className="text-white font-bold mb-1">¿No encontraste tu respuesta?</p>
         <p className="text-gray-400 text-sm mb-4">Escríbenos y respondemos en menos de 1 hora</p>
         <a
           href="https://wa.me/573155550001?text=Hola%2C%20tengo%20una%20pregunta"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-white text-black font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
+          className="inline-flex items-center gap-2 bg-accent hover:bg-white text-black font-bold text-sm px-5 py-2.5 transition-colors"
         >
           Preguntar por WhatsApp
         </a>

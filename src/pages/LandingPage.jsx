@@ -1,16 +1,17 @@
 ﻿import { useState, useEffect, useRef } from 'react'
 import {
-  ArrowRight, Truck, RefreshCw, Shield, Star,
+  ArrowRight, Star,
   MapPin, Phone, Mail, MessageCircle,
-  ChevronLeft, ChevronRight, ShoppingBag,
+  ChevronLeft, ChevronRight,
 } from 'lucide-react'
+import { TIENDA_URL } from '../config'
 
 /* ── Hero carousel ─────────────────────────────────────── */
 
 const SLIDES = [
-  { src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1920&q=85', href: 'https://pruebacalzacaribe.netlify.app/catalogo' },
-  { src: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=1920&q=85', href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=1' },
-  { src: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1920&q=85', href: 'https://pruebacalzacaribe.netlify.app/catalogo?descuento=true' },
+  { src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1920&q=85', href: `${TIENDA_URL}/catalogo` },
+  { src: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=1920&q=85', href: `${TIENDA_URL}/catalogo?categoria=1` },
+  { src: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1920&q=85', href: `${TIENDA_URL}/catalogo?descuento=true` },
 ]
 
 function HeroCarousel() {
@@ -43,17 +44,17 @@ function HeroCarousel() {
         )
       })}
       <button onClick={prev} aria-label="Anterior"
-        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/65 backdrop-blur-sm flex items-center justify-center text-white transition-colors">
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-black/40 hover:bg-black/65 backdrop-blur-sm flex items-center justify-center text-white transition-colors">
         <ChevronLeft size={20} />
       </button>
       <button onClick={next} aria-label="Siguiente"
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/65 backdrop-blur-sm flex items-center justify-center text-white transition-colors">
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-black/40 hover:bg-black/65 backdrop-blur-sm flex items-center justify-center text-white transition-colors">
         <ChevronRight size={20} />
       </button>
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
         {SLIDES.map((_, i) => (
           <button key={i} onClick={() => go(i)} aria-label={`Banner ${i + 1}`}
-            className={`rounded-full transition-all duration-300 ${i === current ? 'w-5 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`} />
+            className={`transition-all duration-300 ${i === current ? 'w-5 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`} />
         ))}
       </div>
     </div>
@@ -62,26 +63,16 @@ function HeroCarousel() {
 
 /* ── Data ───────────────────────────────────────────────── */
 
-const BENEFITS = [
-  { Icon: Truck,     title: 'Envío gratis',       desc: 'En pedidos superiores a $200.000' },
-  { Icon: RefreshCw, title: 'Cambios y devoluciones', desc: 'Sin complicaciones ni letras pequeñas' },
-  { Icon: Shield,    title: 'Compra segura',        desc: 'Pagos cifrados y protegidos' },
-  { Icon: Star,      title: 'Calidad garantizada',  desc: 'Productos seleccionados con cuidado' },
-]
-
 const CATS = [
-  { label: 'Mujer',      img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80',  href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=1', color: 'from-violet-950' },
-  { label: 'Hombre',     img: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&q=80', href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=2', color: 'from-black' },
-  { label: 'Niños',      img: 'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=600&q=80', href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=3', color: 'from-black' },
-  { label: 'Ropa',       img: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80', href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=4', color: 'from-violet-950' },
-  { label: 'Sandalias',  img: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80', href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=5', color: 'from-black' },
-  { label: 'Accesorios', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80',   href: 'https://pruebacalzacaribe.netlify.app/catalogo?categoria=6', color: 'from-black' },
+  { label: 'Mujer', img: '/acordeon/mujer-sandalias.jpg', href: `${TIENDA_URL}/catalogo` },
+  { label: 'Hombre', img: '/acordeon/pareja-mujer-y-hombre.jpg', href: `${TIENDA_URL}/catalogo` },
+  { label: 'Calzado', img: '/acordeon/piernas-mujer-calzado.jpg', href: `${TIENDA_URL}/catalogo` },
 ]
 
 const TESTIMONIALS = [
   { name: 'María González', city: 'Barranquilla', stars: 5, text: 'Excelente calidad en los zapatos. Los tacones que compré son cómodos y muy elegantes. El envío llegó antes de lo esperado.' },
-  { name: 'Carlos Pérez',   city: 'Cartagena',    stars: 5, text: 'Compré unos sneakers para mi hijo y quedó feliz. La guía de tallas es muy precisa, llegó el número exacto.' },
-  { name: 'Laura Martínez', city: 'Santa Marta',  stars: 5, text: 'El servicio al cliente es increíble. Me ayudaron a elegir el modelo perfecto y el proceso de cambio fue muy sencillo.' },
+  { name: 'Carlos Pérez', city: 'Cartagena', stars: 5, text: 'Compré unos sneakers para mi hijo y quedó feliz. La guía de tallas es muy precisa, llegó el número exacto.' },
+  { name: 'Laura Martínez', city: 'Santa Marta', stars: 5, text: 'El servicio al cliente es increíble. Me ayudaron a elegir el modelo perfecto y el proceso de cambio fue muy sencillo.' },
 ]
 
 /* ══════════════════════════════════════════════════════════ */
@@ -93,29 +84,12 @@ export default function LandingPage() {
       {/* ── Hero ── */}
       <HeroCarousel />
 
-      {/* ── Beneficios ── */}
-      <div className="bg-accent">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {BENEFITS.map(({ Icon, title, desc }) => (
-              <div key={title} className="flex items-center gap-3 py-1">
-                <Icon size={18} className="text-white flex-shrink-0" />
-                <div>
-                  <p className="text-xs font-black text-white leading-tight">{title}</p>
-                  <p className="text-[11px] text-white/70 leading-tight mt-0.5 hidden sm:block">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ── Nosotros ── */}
       <section id="nosotros" className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block bg-accent text-white text-xs font-black px-3 py-1 rounded-full mb-4">
+              <span className="inline-block bg-accent text-white text-xs font-black px-3 py-1 mb-4">
                 Nuestra esencia
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight mb-5">
@@ -132,27 +106,27 @@ export default function LandingPage() {
                 Diseñamos y despachamos todo nuestro calzado desde Barranquilla, llevando el ritmo y el estilo del Caribe a cualquier rincón de Colombia con envíos rápidos y confiables.
               </p>
               <a
-                href="https://pruebacalzacaribe.netlify.app"
+                href={TIENDA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-accent text-white font-bold text-sm px-6 py-3 rounded-xl hover:bg-black hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 bg-accent text-white font-bold text-sm px-6 py-3 hover:bg-black hover:text-white transition-colors"
               >
                 Ver la tienda <ArrowRight size={15} />
               </a>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=85"
                   alt="Calzacaribe tienda"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-accent rounded-2xl p-4">
+              <div className="absolute -bottom-4 -left-4 bg-accent p-4">
                 <p className="text-2xl font-black text-white leading-none">+10</p>
                 <p className="text-xs font-semibold text-white/70">años de trayectoria</p>
               </div>
-              <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-4">
+              <div className="absolute -top-4 -right-4 bg-white p-4">
                 <p className="text-2xl font-black text-black leading-none">+200</p>
                 <p className="text-xs font-semibold text-black/60">referencias</p>
               </div>
@@ -161,26 +135,31 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Categorías ── fondo blanco */}
-      <section id="categorias" className="bg-white py-20">
+      {/* ── Categorías: acordeón full-bleed ── fondo blanco */}
+      <section id="estilo" className="bg-white pt-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-black text-black">Encuentra tu estilo</h2>
             <p className="text-gray-500 text-sm mt-2">Explora nuestra selección de calzado y moda para toda la familia</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-            {CATS.map(({ label, img, href, color }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                className="group relative rounded-2xl overflow-hidden aspect-[3/2] block">
-                <img src={img} alt={label}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className={`absolute inset-0 bg-gradient-to-t ${color} to-transparent opacity-70`} />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-white font-black text-lg leading-tight">{label}</h3>
-                  <span className="inline-flex items-center gap-1 text-accent text-xs font-semibold mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    Ver más <ArrowRight size={11} />
-                  </span>
-                </div>
+        </div>
+
+        {/* Escapa el max-w-7xl para ocupar el 100% del ancho de la pantalla */}
+        <div className="relative w-screen left-1/2 right-1/2 -mx-[50vw]">
+          <div className="flex h-[380px] sm:h-[460px] lg:h-[540px]">
+            {CATS.map(({ label, img, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex-1 hover:flex-[3] min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out"
+              >
+                <img
+                  src={img}
+                  alt={label}
+                  className="absolute inset-0 w-full h-full object-cover object-bottom origin-bottom transition-transform duration-[1500ms] ease-in-out group-hover:scale-110"
+                />
               </a>
             ))}
           </div>
@@ -188,34 +167,31 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA hacia la tienda ── */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="relative rounded-3xl overflow-hidden px-8 py-14 text-center border border-black/10">
+      <section className="bg-black">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="aspect-[4/3] lg:aspect-auto">
             <img
-              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1400&q=70"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover opacity-5"
+              src="/cta/Sandalia-Tacón-Tiras-Minimalista.jpg"
+              alt="Calzacaribe tienda online"
+              className="w-full h-full object-cover"
             />
-            <div className="relative z-10">
-              <span className="inline-block bg-accent text-white text-xs font-black px-3 py-1 rounded-full mb-4">
-                Tienda online
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-black mb-4">
-                Compra desde donde estés
-              </h2>
-              <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">
-                Envíos a todo Colombia. Paga con Nequi, PSE, Visa o Mastercard.
-              </p>
-              <a
-                href="https://pruebacalzacaribe.netlify.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-accent hover:bg-black text-white font-black text-sm px-7 py-3.5 rounded-xl transition-colors"
-              >
-                <ShoppingBag size={16} />
-                Visitar la tienda
-              </a>
-            </div>
+          </div>
+          <div className="flex flex-col justify-center px-8 py-14 lg:px-16 xl:px-24">
+            <p className="text-white/60 text-xs font-black uppercase tracking-widest mb-4">Tienda online</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+              Compra desde donde estés
+            </h2>
+            <p className="text-white/80 text-sm mb-8 max-w-md">
+              Envíos a todo Colombia. Paga con Nequi, PSE, Visa o Mastercard.
+            </p>
+            <a
+              href={TIENDA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-fit bg-white hover:bg-accent hover:text-white text-black font-black text-sm px-7 py-3.5 transition-colors"
+            >
+              Visitar la tienda
+            </a>
           </div>
         </div>
       </section>
@@ -224,14 +200,14 @@ export default function LandingPage() {
       <section className="bg-white py-20 border-t border-black/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <span className="inline-block bg-accent text-white text-xs font-black px-3 py-1 rounded-full mb-4">
+            <span className="inline-block bg-accent text-white text-xs font-black px-3 py-1 mb-4">
               Testimonios
             </span>
             <h2 className="text-3xl font-black text-black">Lo que dicen nuestros clientes</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {TESTIMONIALS.map(({ name, city, stars, text }) => (
-              <div key={name} className="bg-gray-50 rounded-2xl p-6">
+              <div key={name} className="bg-gray-50 p-6">
                 <div className="flex gap-0.5 mb-3">
                   {Array.from({ length: stars }).map((_, i) => (
                     <Star key={i} size={14} className="text-accent fill-accent" />
@@ -264,7 +240,7 @@ export default function LandingPage() {
                 <ul className="space-y-3">
                   {[
                     { Icon: MapPin, text: 'Calle 26 No. 17B-25 Las Nieves, Barranquilla', sub: 'Sede Las Nieves' },
-                    { Icon: Phone,  text: '301 509 7013', sub: 'WhatsApp sede principal' },
+                    { Icon: Phone, text: '301 509 7013', sub: 'WhatsApp sede principal' },
                   ].map(({ Icon, text, sub }) => (
                     <li key={text} className="flex items-center gap-3">
                       <Icon size={18} className="text-accent flex-shrink-0" />
@@ -283,7 +259,7 @@ export default function LandingPage() {
                 <ul className="space-y-3">
                   {[
                     { Icon: MapPin, text: 'Carrera 13 No. 99B-85 Barrio La Paz, Barranquilla', sub: 'Sede La Paz' },
-                    { Icon: Phone,  text: '304 461 6737', sub: 'WhatsApp sede La Paz' },
+                    { Icon: Phone, text: '304 461 6737', sub: 'WhatsApp sede La Paz' },
                   ].map(({ Icon, text, sub }) => (
                     <li key={text} className="flex items-center gap-3">
                       <Icon size={18} className="text-accent flex-shrink-0" />
@@ -305,7 +281,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-gray-50 border border-black/10 rounded-3xl p-8 text-center">
+            <div className="bg-gray-50 border border-black/10 p-8 text-center">
               <MessageCircle size={40} className="text-accent mx-auto mb-5" />
               <h3 className="text-black font-black text-xl mb-2">Escríbenos por WhatsApp</h3>
               <p className="text-gray-500 text-sm mb-6">
@@ -316,7 +292,7 @@ export default function LandingPage() {
                   href="https://wa.me/573015097013?text=Hola%2C%20quiero%20información%20sobre%20Calzacaribe"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-black text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-black text-white font-bold px-6 py-3 text-sm transition-colors"
                 >
                   <MessageCircle size={16} />
                   Sede Las Nieves
@@ -325,7 +301,7 @@ export default function LandingPage() {
                   href="https://wa.me/573044616737?text=Hola%2C%20quiero%20información%20sobre%20Calzacaribe"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 border border-black/20 text-black hover:bg-black hover:text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors"
+                  className="inline-flex items-center justify-center gap-2 border border-black/20 text-black hover:bg-black hover:text-white font-bold px-6 py-3 text-sm transition-colors"
                 >
                   <MessageCircle size={16} />
                   Sede La Paz

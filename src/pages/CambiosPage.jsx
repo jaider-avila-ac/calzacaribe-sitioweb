@@ -20,10 +20,10 @@ const NO_APLICA = [
 ]
 
 const STEPS = [
-  { num: '01', title: 'Contáctanos',        desc: 'Escríbenos por WhatsApp al +57 315 555 0001 o a ventas@calzacaribe.co indicando tu número de pedido y el motivo del cambio.' },
-  { num: '02', title: 'Autorización',        desc: 'Nuestro equipo revisará tu solicitud y te enviará la autorización de cambio junto con las instrucciones de envío en un plazo de 24 horas hábiles.' },
-  { num: '03', title: 'Envío del producto',  desc: 'Empaca el artículo en su caja original con todos los elementos incluidos y envíalo a la dirección que te indicaremos. El costo de retorno corre por cuenta del cliente, salvo defecto de fabricación.' },
-  { num: '04', title: 'Revisión y cambio',   desc: 'Al recibir el producto, nuestro equipo lo revisará en un plazo de 2 días hábiles. Si cumple las condiciones, despacharemos el artículo de reemplazo a la mayor brevedad.' },
+  { num: '01', title: 'Contáctanos', desc: 'Escríbenos por WhatsApp al +57 315 555 0001 o a ventas@calzacaribe.co indicando tu número de pedido y el motivo del cambio.' },
+  { num: '02', title: 'Autorización', desc: 'Nuestro equipo revisará tu solicitud y te enviará la autorización de cambio junto con las instrucciones de envío en un plazo de 24 horas hábiles.' },
+  { num: '03', title: 'Envío del producto', desc: 'Empaca el artículo en su caja original con todos los elementos incluidos y envíalo a la dirección que te indicaremos. El costo de retorno corre por cuenta del cliente, salvo defecto de fabricación.' },
+  { num: '04', title: 'Revisión y cambio', desc: 'Al recibir el producto, nuestro equipo lo revisará en un plazo de 2 días hábiles. Si cumple las condiciones, despacharemos el artículo de reemplazo a la mayor brevedad.' },
 ]
 
 export default function CambiosPage() {
@@ -37,14 +37,14 @@ export default function CambiosPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
 
         {/* Aplica: fondo lima, texto negro */}
-        <div className="bg-accent rounded-2xl p-5">
+        <div className="bg-accent p-5">
           <h3 className="font-black text-black mb-4 flex items-center gap-2">
             <CheckCircle size={18} className="text-black" /> Aplica para cambios
           </h3>
           <ul className="space-y-2">
             {APLICA.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-black">
-                <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 bg-black mt-1.5 flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -52,14 +52,14 @@ export default function CambiosPage() {
         </div>
 
         {/* No aplica: fondo negro, texto blanco */}
-        <div className="bg-black rounded-2xl p-5">
+        <div className="bg-black p-5">
           <h3 className="font-black text-white mb-4 flex items-center gap-2">
             <XCircle size={18} className="text-red-600" /> No aplica para cambios
           </h3>
           <ul className="space-y-2">
             {NO_APLICA.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-white">
-                <span className="w-1.5 h-1.5 bg-red-600 rounded-full mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 bg-red-600 mt-1.5 flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -71,8 +71,8 @@ export default function CambiosPage() {
       <h3 className="text-base font-black text-black mt-10 mb-6">¿Cómo solicitar un cambio?</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {STEPS.map(({ num, title, desc }) => (
-          <div key={num} className="flex gap-4 border-2 border-black rounded-2xl p-5">
-            <div className="w-9 h-9 bg-black rounded-xl flex items-center justify-center flex-shrink-0">
+          <div key={num} className="flex gap-4 border-2 border-black p-5">
+            <div className="w-9 h-9 bg-black flex items-center justify-center flex-shrink-0">
               <span className="text-accent font-black text-sm">{num}</span>
             </div>
             <div>
@@ -83,14 +83,14 @@ export default function CambiosPage() {
         ))}
       </div>
 
-      <div className="mt-8 bg-black rounded-2xl p-6 text-center">
+      <div className="mt-8 bg-black p-6 text-center">
         <p className="text-white font-bold mb-1">¿Necesitas ayuda con tu cambio?</p>
         <p className="text-gray-400 text-sm mb-4">Nuestro equipo está disponible de Lunes a Sábado de 8am a 6pm</p>
         <a
           href="https://wa.me/573155550001?text=Hola%2C%20quiero%20solicitar%20un%20cambio%20de%20producto"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-white text-black font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
+          className="inline-flex items-center gap-2 bg-accent hover:bg-white text-black font-bold text-sm px-5 py-2.5 transition-colors"
         >
           Iniciar cambio por WhatsApp
         </a>
