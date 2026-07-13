@@ -72,6 +72,14 @@ const CATS = [
 function CategoriasAccordion() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
+  // Solo dispositivos con mouse real (hover fino) pueden pausar/expandir por interacción.
+  // En táctil (celular/tablet) esto queda en false para siempre, así el auto-play jamás
+  // se detiene sin importar cuántos toques/clics reciba.
+  const canHoverRef = useRef(false)
+
+  useEffect(() => {
+    canHoverRef.current = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  }, [])
 
   useEffect(() => {
     if (paused) return
@@ -83,15 +91,12 @@ function CategoriasAccordion() {
     // Acordeón (3 paneles lado a lado, uno se expande) en todos los tamaños de pantalla.
     // aspect-[4300/3093] calculado para que el panel activo, a 3/5 del ancho, sea 860x1031.
     // max-h-[85vh]: nunca ocupa toda la pantalla, siempre queda algo del resto de la página visible.
-    <div className="flex aspect-[4300/3093] max-h-[85vh]">
+    <div className="flex w-full aspect-[4300/3093] max-h-[85vh]">
       {CATS.map(({ label, img }, i) => (
         <div
           key={label}
-          // pointerType: solo mouse real activa/pausa el acordeón — un tap en móvil no debe
-          // disparar nada (ni expandir, ni pausar el auto-play, que además nunca recibiría
-          // el "pointerleave" para reanudarse y quedaría trabado).
-          onPointerEnter={(e) => { if (e.pointerType === 'mouse') { setPaused(true); setActive(i) } }}
-          onPointerLeave={(e) => { if (e.pointerType === 'mouse') setPaused(false) }}
+          onPointerEnter={() => { if (canHoverRef.current) { setPaused(true); setActive(i) } }}
+          onPointerLeave={() => { if (canHoverRef.current) setPaused(false) }}
           className={`relative min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out ${
             active === i ? 'flex-[3]' : 'flex-1'
           }`}
@@ -113,7 +118,61 @@ const TESTIMONIALS = [
   { name: 'María González', city: 'Barranquilla', stars: 5, text: 'Excelente calidad en los zapatos. Los tacones que compré son cómodos y muy elegantes. El envío llegó antes de lo esperado.' },
   { name: 'Carlos Pérez', city: 'Cartagena', stars: 5, text: 'Compré unos sneakers para mi hijo y quedó feliz. La guía de tallas es muy precisa, llegó el número exacto.' },
   { name: 'Laura Martínez', city: 'Santa Marta', stars: 5, text: 'El servicio al cliente es increíble. Me ayudaron a elegir el modelo perfecto y el proceso de cambio fue muy sencillo.' },
+  { name: 'Andrea Rodríguez', city: 'Montería', stars: 5, text: 'Pedí unas sandalias para el verano y llegaron impecables, bien empacadas. La calidad supera por mucho el precio que pagué.' },
+  { name: 'Jorge Martínez', city: 'Valledupar', stars: 5, text: 'Tenía dudas con mi talla y me escribieron por WhatsApp para asesorarme. Llegó perfecto, sin tener que hacer ningún cambio.' },
+  { name: 'Camila Torres', city: 'Riohacha', stars: 5, text: 'Tuve que hacer un cambio de talla y todo el proceso fue rapidísimo, sin complicaciones. Ya es mi tienda de confianza para calzado.' },
 ]
+
+function TestimonialsCarousel() {
+  const [current, setCurrent] = useState(0)
+  const timerRef = useRef(null)
+
+  const startTimer = () => {
+    clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => setCurrent((i) => (i + 1) % TESTIMONIALS.length), 4000)
+  }
+
+  useEffect(() => { startTimer(); return () => clearInterval(timerRef.current) }, [])
+
+  const go = (idx) => { setCurrent(idx); startTimer() }
+
+  return (
+    <div>
+      <div className="relative min-h-[280px] sm:min-h-[220px]">
+        {TESTIMONIALS.map(({ name, city, stars, text }, i) => {
+          const offset = (i - current + TESTIMONIALS.length) % TESTIMONIALS.length
+          const x = offset === 0 ? 0 : offset === TESTIMONIALS.length - 1 ? -100 : 100
+          return (
+            <div
+              key={name}
+              className="absolute inset-0 transition-all duration-500 ease-in-out"
+              style={{ transform: `translateX(${x}%)`, opacity: offset === 0 ? 1 : 0 }}
+            >
+              <div className="bg-gray-50 p-6 sm:p-8 max-w-xl mx-auto text-center">
+                <div className="flex justify-center gap-0.5 mb-3">
+                  {Array.from({ length: stars }).map((_, s) => (
+                    <Star key={s} size={16} className="text-accent fill-accent" />
+                  ))}
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">"{text}"</p>
+                <div>
+                  <p className="text-sm font-bold text-black">{name}</p>
+                  <p className="text-xs text-gray-400">{city}</p>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <div className="flex items-center justify-center gap-1.5 mt-6">
+        {TESTIMONIALS.map((_, i) => (
+          <button key={i} onClick={() => go(i)} aria-label={`Testimonio ${i + 1}`}
+            className={`transition-all duration-300 ${i === current ? 'w-5 h-1.5 bg-accent' : 'w-1.5 h-1.5 bg-gray-300 hover:bg-gray-400'}`} />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 /* ══════════════════════════════════════════════════════════ */
 
@@ -229,22 +288,7 @@ export default function LandingPage() {
             </span>
             <h2 className="text-3xl font-black text-black">Lo que dicen nuestros clientes</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {TESTIMONIALS.map(({ name, city, stars, text }) => (
-              <div key={name} className="bg-gray-50 p-6">
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: stars }).map((_, i) => (
-                    <Star key={i} size={14} className="text-accent fill-accent" />
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">"{text}"</p>
-                <div>
-                  <p className="text-sm font-bold text-black">{name}</p>
-                  <p className="text-xs text-gray-400">{city}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialsCarousel />
         </div>
       </section>
 
