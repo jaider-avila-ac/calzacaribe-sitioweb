@@ -61,13 +61,47 @@ function HeroCarousel() {
   )
 }
 
-/* ── Data ───────────────────────────────────────────────── */
+/* ── Acordeón de categorías (con auto-play cuando nadie lo toca) ── */
 
 const CATS = [
-  { label: 'Mujer', img: '/acordeon/mujer-sandalias.jpg', href: `${TIENDA_URL}/catalogo` },
-  { label: 'Hombre', img: '/acordeon/pareja-mujer-y-hombre.jpg', href: `${TIENDA_URL}/catalogo` },
-  { label: 'Calzado', img: '/acordeon/piernas-mujer-calzado.jpg', href: `${TIENDA_URL}/catalogo` },
+  { label: 'Mujer', img: '/acordeon/mujer-sandalias.jpg' },
+  { label: 'Hombre', img: '/acordeon/pareja-mujer-y-hombre.jpg' },
+  { label: 'Calzado', img: '/acordeon/piernas-mujer-calzado.jpg' },
 ]
+
+function CategoriasAccordion() {
+  const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(() => setActive((i) => (i + 1) % CATS.length), 2200)
+    return () => clearInterval(id)
+  }, [paused])
+
+  return (
+    <div className="flex h-[380px] sm:h-[460px] lg:h-[540px]">
+      {CATS.map(({ label, img }, i) => (
+        <div
+          key={label}
+          onMouseEnter={() => { setPaused(true); setActive(i) }}
+          onMouseLeave={() => setPaused(false)}
+          className={`relative min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out ${
+            active === i ? 'flex-[3]' : 'flex-1'
+          }`}
+        >
+          <img
+            src={img}
+            alt={label}
+            className={`absolute inset-0 w-full h-full object-cover object-bottom origin-bottom transition-transform duration-[1500ms] ease-in-out ${
+              active === i ? 'scale-110' : ''
+            }`}
+          />
+        </div>
+      ))}
+    </div>
+  )
+}
 
 const TESTIMONIALS = [
   { name: 'María González', city: 'Barranquilla', stars: 5, text: 'Excelente calidad en los zapatos. Los tacones que compré son cómodos y muy elegantes. El envío llegó antes de lo esperado.' },
@@ -146,23 +180,7 @@ export default function LandingPage() {
 
         {/* Escapa el max-w-7xl para ocupar el 100% del ancho de la pantalla */}
         <div className="relative w-screen left-1/2 right-1/2 -mx-[50vw]">
-          <div className="flex h-[380px] sm:h-[460px] lg:h-[540px]">
-            {CATS.map(({ label, img, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex-1 hover:flex-[3] min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out"
-              >
-                <img
-                  src={img}
-                  alt={label}
-                  className="absolute inset-0 w-full h-full object-cover object-bottom origin-bottom transition-transform duration-[1500ms] ease-in-out group-hover:scale-110"
-                />
-              </a>
-            ))}
-          </div>
+          <CategoriasAccordion />
         </div>
       </section>
 
@@ -176,7 +194,7 @@ export default function LandingPage() {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center px-8 py-14 lg:px-16 xl:px-24">
+          <div className="flex flex-col justify-center items-center text-center lg:items-start lg:text-left px-8 py-14 lg:px-16 xl:px-24">
             <p className="text-white/60 text-xs font-black uppercase tracking-widest mb-4">Tienda online</p>
             <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
               Compra desde donde estés
