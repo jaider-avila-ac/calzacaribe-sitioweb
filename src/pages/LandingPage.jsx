@@ -282,7 +282,6 @@ export default function LandingPage() {
             </div>
 
             <div className="bg-gray-50 border border-black/10 p-8 text-center">
-              <MessageCircle size={40} className="text-accent mx-auto mb-5" />
               <h3 className="text-black font-black text-xl mb-2">Escríbenos por WhatsApp</h3>
               <p className="text-gray-500 text-sm mb-6">
                 Resolvemos tus dudas sobre tallas, colores, pedidos y envíos al instante.
