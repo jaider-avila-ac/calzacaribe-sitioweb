@@ -80,10 +80,10 @@ function CategoriasAccordion() {
   }, [paused])
 
   return (
-    // Móvil: carrusel, un panel a la vez a ancho completo (aspect-[4/5] = el panel visible ya es 1080x1350).
-    // Desktop (lg+): acordeón con los 3 paneles lado a lado (aspect-[4/3] calculado para que el panel
-    // activo, a 3/5 del ancho, sea 1080x1350).
-    <div className="flex aspect-[4/5] lg:aspect-[4/3]">
+    // Móvil: carrusel, un panel a la vez a ancho completo (aspect-[860/1031] = el panel visible ya es 860x1031).
+    // Desktop (lg+): acordeón con los 3 paneles lado a lado (aspect-[4300/3093] calculado para que el panel
+    // activo, a 3/5 del ancho, sea 860x1031).
+    <div className="flex aspect-[860/1031] lg:aspect-[4300/3093]">
       {CATS.map(({ label, img }, i) => (
         <div
           key={label}
