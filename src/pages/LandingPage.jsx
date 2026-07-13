@@ -80,15 +80,18 @@ function CategoriasAccordion() {
   }, [paused])
 
   return (
-    <div className="flex aspect-[4/1]">
+    // Móvil: carrusel, un panel a la vez a ancho completo (aspect-[4/5] = el panel visible ya es 1080x1350).
+    // Desktop (lg+): acordeón con los 3 paneles lado a lado (aspect-[4/3] calculado para que el panel
+    // activo, a 3/5 del ancho, sea 1080x1350).
+    <div className="flex aspect-[4/5] lg:aspect-[4/3]">
       {CATS.map(({ label, img }, i) => (
         <div
           key={label}
           onMouseEnter={() => { setPaused(true); setActive(i) }}
           onMouseLeave={() => setPaused(false)}
           className={`relative min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out ${
-            active === i ? 'flex-[3]' : 'flex-1'
-          }`}
+            active === i ? 'flex w-full' : 'hidden'
+          } lg:flex lg:w-auto ${active === i ? 'lg:flex-[3]' : 'lg:flex-1'}`}
         >
           <img
             src={img}
