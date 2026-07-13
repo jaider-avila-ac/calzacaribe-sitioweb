@@ -192,7 +192,7 @@ export default function LandingPage() {
       <HeroCarousel />
 
       {/* ── Nosotros ── */}
-      <section id="nosotros" className="bg-white py-20">
+      <section id="nosotros" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -243,7 +243,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Categorías: acordeón full-bleed ── fondo blanco */}
-      <section id="estilo" className="bg-white pt-20">
+      <section id="estilo" className="bg-white pt-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-black text-black">Encuentra tu estilo</h2>
@@ -288,7 +288,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Testimonios ── */}
-      <section className="bg-white py-20 border-t border-black/10">
+      <section className="bg-white py-16 border-t border-black/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <span className="inline-block bg-accent text-white text-xs font-black px-3 py-1 mb-4">
@@ -301,7 +301,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Instagram ── colores de marca de Instagram, invita a seguir el perfil */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div
             className="p-10 sm:p-16 text-center"
@@ -326,7 +326,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Contacto ── fondo blanco */}
-      <section id="contacto" className="bg-white py-20">
+      <section id="contacto" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
