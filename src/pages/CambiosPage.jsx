@@ -19,7 +19,7 @@ const NO_APLICA = [
 ]
 
 const STEPS = [
-  { title: '1. Contáctanos', desc: 'Escríbenos por WhatsApp al +57 301 509 7013 o a ventas@calzacaribe.co indicando tu número de pedido y el motivo del cambio.' },
+  { title: '1. Contáctanos', desc: 'Escríbenos por WhatsApp al +57 301 509 7013 indicando tu número de pedido y el motivo del cambio.' },
   { title: '2. Autorización', desc: 'Nuestro equipo revisará tu solicitud y te enviará la autorización de cambio junto con las instrucciones de envío en un plazo de 24 horas hábiles.' },
   { title: '3. Envío del producto', desc: 'Empaca el artículo en su caja original con todos los elementos incluidos y envíalo a la dirección que te indicaremos. El costo de retorno corre por cuenta del cliente, salvo defecto de fabricación.' },
   { title: '4. Revisión y cambio', desc: 'Al recibir el producto, nuestro equipo lo revisará en un plazo de 2 días hábiles. Si cumple las condiciones, despacharemos el artículo de reemplazo a la mayor brevedad.' },

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone } from 'lucide-react'
 
 function IconInstagram({ size = 17 }) {
   return (
@@ -105,10 +105,6 @@ export default function Footer() {
                   <span>Carrera 13 No. 99B-85 Barrio La Paz, Barranquilla</span>
                 </p>
               </div>
-              <a href="mailto:ventas@calzacaribe.co"
-                className="flex items-center gap-2 text-sm text-white hover:underline transition-colors">
-                <Mail size={14} className="text-white flex-shrink-0" />ventas@calzacaribe.co
-              </a>
             </div>
             <div className="mt-5 p-3">
               <p className="text-xs text-white">Horario de atención</p>

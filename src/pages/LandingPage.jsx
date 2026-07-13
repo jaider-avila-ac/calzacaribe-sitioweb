@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect, useRef } from 'react'
 import {
   ArrowRight, Star,
-  MapPin, Phone, Mail, MessageCircle,
+  MapPin, Phone, MessageCircle,
   ChevronLeft, ChevronRight,
 } from 'lucide-react'
 import { TIENDA_URL } from '../config'
@@ -272,13 +272,6 @@ export default function LandingPage() {
                 </ul>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Mail size={18} className="text-accent flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-bold text-black">ventas@calzacaribe.co</p>
-                  <p className="text-xs text-gray-500">Correo electrónico</p>
-                </div>
-              </div>
             </div>
 
             <div className="bg-gray-50 border border-black/10 p-8 text-center">

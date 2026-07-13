@@ -27,7 +27,7 @@ const SECTIONS = [
   },
   {
     title: '7. Derechos del titular',
-    body: 'De conformidad con la Ley 1581 de 2012, usted tiene derecho a: conocer, actualizar, rectificar y suprimir sus datos personales; revocar la autorización otorgada para el tratamiento; ser informado sobre el uso de sus datos; presentar quejas ante la Superintendencia de Industria y Comercio. Para ejercer estos derechos, contáctenos en ventas@calzacaribe.co.',
+    body: 'De conformidad con la Ley 1581 de 2012, usted tiene derecho a: conocer, actualizar, rectificar y suprimir sus datos personales; revocar la autorización otorgada para el tratamiento; ser informado sobre el uso de sus datos; presentar quejas ante la Superintendencia de Industria y Comercio. Para ejercer estos derechos, contáctenos por WhatsApp al +57 301 509 7013.',
   },
   {
     title: '8. Vigencia de la política',
