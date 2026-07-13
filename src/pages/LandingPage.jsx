@@ -87,8 +87,11 @@ function CategoriasAccordion() {
       {CATS.map(({ label, img }, i) => (
         <div
           key={label}
-          onMouseEnter={() => { setPaused(true); setActive(i) }}
-          onMouseLeave={() => setPaused(false)}
+          // pointerType: solo mouse real activa/pausa el acordeón — un tap en móvil no debe
+          // disparar nada (ni expandir, ni pausar el auto-play, que además nunca recibiría
+          // el "pointerleave" para reanudarse y quedaría trabado).
+          onPointerEnter={(e) => { if (e.pointerType === 'mouse') { setPaused(true); setActive(i) } }}
+          onPointerLeave={(e) => { if (e.pointerType === 'mouse') setPaused(false) }}
           className={`relative min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out ${
             active === i ? 'flex w-full' : 'hidden'
           } lg:flex lg:w-auto ${active === i ? 'lg:flex-[3]' : 'lg:flex-1'}`}
