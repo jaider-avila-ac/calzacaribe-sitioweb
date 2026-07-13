@@ -178,10 +178,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Escapa el max-w-7xl para ocupar el 100% del ancho de la pantalla */}
-        <div className="relative w-screen left-1/2 right-1/2 -mx-[50vw]">
-          <CategoriasAccordion />
-        </div>
+        <CategoriasAccordion />
       </section>
 
       {/* ── CTA hacia la tienda ── */}
