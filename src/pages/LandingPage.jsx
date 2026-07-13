@@ -146,7 +146,7 @@ function TestimonialsCarousel() {
 
   return (
     <div>
-      <div className="relative min-h-[280px] sm:min-h-[220px]">
+      <div className="relative min-h-[210px] sm:min-h-[180px]">
         {TESTIMONIALS.map(({ name, city, stars, text }, i) => {
           const offset = (i - current + TESTIMONIALS.length) % TESTIMONIALS.length
           const x = offset === 0 ? 0 : offset === TESTIMONIALS.length - 1 ? -100 : 100
@@ -172,7 +172,7 @@ function TestimonialsCarousel() {
           )
         })}
       </div>
-      <div className="flex items-center justify-center gap-1.5 mt-6">
+      <div className="flex items-center justify-center gap-1.5 mt-4">
         {TESTIMONIALS.map((_, i) => (
           <button key={i} onClick={() => go(i)} aria-label={`Testimonio ${i + 1}`}
             className={`transition-all duration-300 ${i === current ? 'w-5 h-1.5 bg-accent' : 'w-1.5 h-1.5 bg-gray-300 hover:bg-gray-400'}`} />
