@@ -80,10 +80,10 @@ function CategoriasAccordion() {
   }, [paused])
 
   return (
-    // Móvil: carrusel, un panel a la vez a ancho completo (aspect-[860/1031] = el panel visible ya es 860x1031).
-    // Desktop (lg+): acordeón con los 3 paneles lado a lado (aspect-[4300/3093] calculado para que el panel
-    // activo, a 3/5 del ancho, sea 860x1031).
-    <div className="flex aspect-[860/1031] lg:aspect-[4300/3093]">
+    // Acordeón (3 paneles lado a lado, uno se expande) en todos los tamaños de pantalla.
+    // aspect-[4300/3093] calculado para que el panel activo, a 3/5 del ancho, sea 860x1031.
+    // max-h-[85vh]: nunca ocupa toda la pantalla, siempre queda algo del resto de la página visible.
+    <div className="flex aspect-[4300/3093] max-h-[85vh]">
       {CATS.map(({ label, img }, i) => (
         <div
           key={label}
@@ -93,8 +93,8 @@ function CategoriasAccordion() {
           onPointerEnter={(e) => { if (e.pointerType === 'mouse') { setPaused(true); setActive(i) } }}
           onPointerLeave={(e) => { if (e.pointerType === 'mouse') setPaused(false) }}
           className={`relative min-w-0 overflow-hidden transition-[flex] duration-500 ease-in-out ${
-            active === i ? 'flex w-full' : 'hidden'
-          } lg:flex lg:w-auto ${active === i ? 'lg:flex-[3]' : 'lg:flex-1'}`}
+            active === i ? 'flex-[3]' : 'flex-1'
+          }`}
         >
           <img
             src={img}
