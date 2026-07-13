@@ -184,7 +184,10 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <CategoriasAccordion />
+        {/* Escapa el max-w-[1920px] de <main> para llegar siempre al borde real de la pantalla */}
+        <div className="relative w-screen left-1/2 right-1/2 -mx-[50vw]">
+          <CategoriasAccordion />
+        </div>
       </section>
 
       {/* ── CTA hacia la tienda ── */}
