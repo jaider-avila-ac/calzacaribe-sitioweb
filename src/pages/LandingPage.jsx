@@ -80,7 +80,7 @@ function CategoriasAccordion() {
   }, [paused])
 
   return (
-    <div className="flex aspect-[12/5]">
+    <div className="flex aspect-[4/1]">
       {CATS.map(({ label, img }, i) => (
         <div
           key={label}
