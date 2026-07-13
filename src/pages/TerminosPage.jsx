@@ -47,7 +47,7 @@ export default function TerminosPage() {
   return (
     <LegalLayout
       title="Términos y Condiciones"
-      updated="Última actualización: enero de 2025"
+      updated="Última actualización: enero de 2026"
       intro="Por favor, lea detenidamente estos Términos y Condiciones antes de utilizar los servicios de Calzacaribe. Al acceder a nuestra plataforma o realizar una compra, usted acepta cumplir con las condiciones aquí descritas."
     >
       {SECTIONS.map(({ title, body }) => (

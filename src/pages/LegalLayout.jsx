@@ -11,7 +11,7 @@ export default function LegalLayout({ title, updated, intro, children }) {
       <h1 className="text-3xl sm:text-4xl font-black text-black mb-2">{title}</h1>
       {updated && <p className="text-xs text-gray-400 mb-5">{updated}</p>}
       {intro && (
-        <p className="text-gray-500 text-sm leading-relaxed border-l-4 border-accent pl-4 mb-2">{intro}</p>
+        <p className="text-gray-600 text-sm leading-relaxed mb-2">{intro}</p>
       )}
 
       <hr className="border-black/10 my-6" />

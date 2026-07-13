@@ -73,13 +73,12 @@ export default function TallasPage() {
   return (
     <LegalLayout
       title="Guía de Tallas"
-      updated="Actualizada: enero de 2025"
+      updated="Actualizada: enero de 2026"
       intro="Encuentra tu talla perfecta con nuestra guía. Si tienes dudas, escríbenos por WhatsApp y te asesoramos personalmente. Recuerda que puedes realizar cambios de talla dentro de los 30 días siguientes a tu compra."
     >
-      {/* Consejo — fondo lima, texto negro */}
-      <div className="mt-8 bg-accent p-4 text-sm text-black font-medium">
-        <strong>Consejo:</strong> Si tu pie está entre dos tallas, te recomendamos elegir la talla mayor. Para calzado cerrado como botines o zapatos formales, considera media talla más para mayor comodidad.
-      </div>
+      <p className="mt-8 text-sm text-gray-600 leading-relaxed">
+        <strong className="text-black">Consejo:</strong> Si tu pie está entre dos tallas, te recomendamos elegir la talla mayor. Para calzado cerrado como botines o zapatos formales, considera media talla más para mayor comodidad.
+      </p>
 
       <h3 className="text-base font-black text-black mt-8 mb-1">Calzado Mujer (Colombia / US / UK / EU)</h3>
       <Table headers={['Col', 'Largo pie', 'US', 'UK', 'EU']} rows={CALZADO_MUJER} />
@@ -94,18 +93,13 @@ export default function TallasPage() {
       <p className="text-xs text-gray-500 mb-1">Medidas en centímetros. Toma las medidas sobre la ropa interior.</p>
       <Table headers={['Talla', 'Pecho / Busto', 'Cintura', 'Cadera']} rows={ROPA} />
 
-      <div className="mt-8 bg-black p-6 text-center">
-        <p className="text-white font-bold mb-1">¿Aún tienes dudas sobre tu talla?</p>
-        <p className="text-gray-400 text-sm mb-4">Nuestros asesores te ayudan a elegir la talla perfecta</p>
-        <a
-          href="https://wa.me/573155550001?text=Hola%2C%20necesito%20ayuda%20para%20encontrar%20mi%20talla"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-white text-black font-bold text-sm px-5 py-2.5 transition-colors"
-        >
-          Asesoría por WhatsApp
-        </a>
-      </div>
+      <p className="text-sm text-gray-600 leading-relaxed mt-8">
+        ¿Aún tienes dudas sobre tu talla? Escríbenos por WhatsApp al{' '}
+        <a href="https://wa.me/573015097013" target="_blank" rel="noopener noreferrer" className="font-bold text-black hover:underline">
+          +57 301 509 7013
+        </a>{' '}
+        y un asesor te ayuda a elegir la talla perfecta.
+      </p>
     </LegalLayout>
   )
 }

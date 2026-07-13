@@ -1,6 +1,4 @@
-﻿import { useState } from 'react'
 import LegalLayout from './LegalLayout'
-import { ChevronDown } from 'lucide-react'
 
 const FAQS = [
   {
@@ -23,7 +21,7 @@ const FAQS = [
     category: 'Envíos',
     items: [
       { q: '¿A qué ciudades hacen envíos?', a: 'Realizamos envíos a todo el territorio colombiano, incluyendo ciudades principales y municipios. El tiempo de entrega varía entre 2 y 5 días hábiles según la ubicación.' },
-      { q: '¿Cuánto cuesta el envío?', a: 'El envío tiene un costo fijo de $12.000 COP. Los pedidos superiores a $200.000 COP tienen envío gratis a todo Colombia.' },
+      { q: '¿Cuánto cuesta el envío?', a: 'El costo de envío se calcula según tu ciudad de destino y el monto de tu pedido. Consulta las condiciones de envío gratis vigentes en el carrito de compra.' },
       { q: '¿Cómo puedo rastrear mi pedido?', a: 'Una vez despachado tu pedido, recibirás por WhatsApp o correo el número de guía y el enlace de rastreo de la transportadora.' },
       { q: '¿Qué pasa si no estoy en casa cuando llegue el pedido?', a: 'La transportadora realizará hasta dos intentos de entrega. Si no es posible entregar el paquete, será retenido en la oficina más cercana por un período limitado.' },
     ],
@@ -45,27 +43,6 @@ const FAQS = [
   },
 ]
 
-function FAQItem({ q, a }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="border-b border-black/10 last:border-0">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-4 py-4 text-left"
-      >
-        <span className="text-sm font-bold text-black">{q}</span>
-        <ChevronDown
-          size={16}
-          className={`text-gray-400 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-        />
-      </button>
-      {open && (
-        <p className="text-sm text-gray-500 leading-relaxed pb-4 pr-8">{a}</p>
-      )}
-    </div>
-  )
-}
-
 export default function FAQPage() {
   return (
     <LegalLayout
@@ -73,32 +50,25 @@ export default function FAQPage() {
       updated=""
       intro="Encuentra respuesta a las dudas más comunes sobre pedidos, pagos, envíos, tallas y cambios. Si no encuentras lo que buscas, escríbenos por WhatsApp."
     >
-      <div className="mt-8 space-y-8">
-        {FAQS.map(({ category, items }) => (
-          <div key={category}>
-            {/* Etiqueta de categoría: chip negro con texto blanco */}
-            <div className="inline-flex items-center bg-black text-white text-xs font-black px-3 py-1 mb-3">
-              {category}
+      {FAQS.map(({ category, items }) => (
+        <div key={category} className="mt-8">
+          <h3 className="text-base font-black text-black mb-3">{category}</h3>
+          {items.map(({ q, a }) => (
+            <div key={q} className="mb-3">
+              <p className="text-sm font-bold text-black">{q}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">{a}</p>
             </div>
-            <div className="border-2 border-black px-5">
-              {items.map(({ q, a }) => <FAQItem key={q} q={q} a={a} />)}
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ))}
 
-      <div className="mt-10 bg-black p-6 text-center">
-        <p className="text-white font-bold mb-1">¿No encontraste tu respuesta?</p>
-        <p className="text-gray-400 text-sm mb-4">Escríbenos y respondemos en menos de 1 hora</p>
-        <a
-          href="https://wa.me/573155550001?text=Hola%2C%20tengo%20una%20pregunta"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-white text-black font-bold text-sm px-5 py-2.5 transition-colors"
-        >
-          Preguntar por WhatsApp
+      <p className="text-sm text-gray-600 leading-relaxed mt-8">
+        ¿No encontraste tu respuesta? Escríbenos por WhatsApp al{' '}
+        <a href="https://wa.me/573015097013" target="_blank" rel="noopener noreferrer" className="font-bold text-black hover:underline">
+          +57 301 509 7013
         </a>
-      </div>
+        , respondemos en menos de 1 hora.
+      </p>
     </LegalLayout>
   )
 }

@@ -39,7 +39,7 @@ export default function PrivacidadPage() {
   return (
     <LegalLayout
       title="Política de Privacidad"
-      updated="Última actualización: enero de 2025"
+      updated="Última actualización: enero de 2026"
       intro="En Calzacaribe valoramos y respetamos su privacidad. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos su información personal, de acuerdo con la normativa colombiana de protección de datos (Ley 1581 de 2012)."
     >
       {SECTIONS.map(({ title, body }) => (
