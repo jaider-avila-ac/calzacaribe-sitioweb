@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, ShoppingBag } from 'lucide-react'
 import { TIENDA_URL } from '../../config'
 
@@ -13,6 +13,7 @@ const NAV_LINKS = [
 export default function Header() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   const scrollTo = (id) => {
     setOpen(false)
@@ -24,10 +25,11 @@ export default function Header() {
     if (to.startsWith('/#')) {
       e.preventDefault()
       const id = to.slice(2)
+      setOpen(false)
       if (pathname === '/') {
         scrollTo(id)
       } else {
-        window.location.href = to
+        navigate(to)
       }
     } else {
       setOpen(false)

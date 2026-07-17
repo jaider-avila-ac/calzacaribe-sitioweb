@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import {
   ArrowRight, Star,
   MapPin, Phone, MessageCircle,
@@ -185,6 +186,16 @@ function TestimonialsCarousel() {
 /* ══════════════════════════════════════════════════════════ */
 
 export default function LandingPage() {
+  const { hash } = useLocation()
+
+  // Cuando se navega desde otra página con un hash (ej. Header linkeando a "/#nosotros"),
+  // React Router no hace scroll automático — hay que hacerlo manualmente tras montar.
+  useEffect(() => {
+    if (!hash) return
+    const el = document.getElementById(hash.slice(1))
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }, [hash])
+
   return (
     <div>
 
