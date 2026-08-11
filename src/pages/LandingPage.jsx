@@ -126,10 +126,10 @@ function CategoriasAccordion() {
 const TESTIMONIALS = [
   { name: 'María González', city: 'Barranquilla', stars: 5, text: 'Excelente calidad en los zapatos. Los tacones que compré son cómodos y muy elegantes. El envío llegó antes de lo esperado.' },
   { name: 'Carlos Pérez', city: 'Cartagena', stars: 5, text: 'Compré unos sneakers para mi hijo y quedó feliz. La guía de tallas es muy precisa, llegó el número exacto.' },
-  { name: 'Laura Martínez', city: 'Santa Marta', stars: 5, text: 'El servicio al cliente es increíble. Me ayudaron a elegir el modelo perfecto y el proceso de cambio fue muy sencillo.' },
+  { name: 'Laura Martínez', city: 'Santa Marta', stars: 5, text: 'El servicio al cliente es increíble. Me ayudaron a elegir el modelo perfecto por WhatsApp antes de comprar.' },
   { name: 'Andrea Rodríguez', city: 'Montería', stars: 5, text: 'Pedí unas sandalias para el verano y llegaron impecables, bien empacadas. La calidad supera por mucho el precio que pagué.' },
   { name: 'Jorge Martínez', city: 'Valledupar', stars: 5, text: 'Tenía dudas con mi talla y me escribieron por WhatsApp para asesorarme. Llegó perfecto, sin tener que hacer ningún cambio.' },
-  { name: 'Camila Torres', city: 'Riohacha', stars: 5, text: 'Tuve que hacer un cambio de talla y todo el proceso fue rapidísimo, sin complicaciones. Ya es mi tienda de confianza para calzado.' },
+  { name: 'Camila Torres', city: 'Riohacha', stars: 5, text: 'Un par no me convenció y pude devolverlo sin problema — me reembolsaron rápido, sin vueltas. Ya es mi tienda de confianza para calzado.' },
 ]
 
 function TestimonialsCarousel() {
