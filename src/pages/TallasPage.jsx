@@ -74,7 +74,7 @@ export default function TallasPage() {
     <LegalLayout
       title="Guía de Tallas"
       updated="Actualizada: enero de 2026"
-      intro="Encuentra tu talla perfecta con nuestra guía. Si tienes dudas, escríbenos por WhatsApp y te asesoramos personalmente. Recuerda que puedes realizar cambios de talla dentro de los 30 días siguientes a tu compra."
+      intro="Encuentra tu talla perfecta con nuestra guía. Si tienes dudas, escríbenos por WhatsApp y te asesoramos personalmente antes de comprar — no realizamos cambios de mercancía por talla, así que la mejor forma de acertar es consultarnos primero."
     >
       <p className="mt-8 text-sm text-gray-600 leading-relaxed">
         <strong className="text-black">Consejo:</strong> Si tu pie está entre dos tallas, te recomendamos elegir la talla mayor. Para calzado cerrado como botines o zapatos formales, considera media talla más para mayor comodidad.
