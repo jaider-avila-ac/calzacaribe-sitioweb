@@ -72,10 +72,21 @@ export default function Header() {
           </a>
         </div>
 
+        {/* CTA móvil — siempre visible (el header ya es fixed), sin necesidad de abrir el menú */}
+        <a
+          href={TIENDA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="md:hidden flex items-center gap-1.5 bg-accent hover:bg-accent-dark text-white font-bold text-xs px-3 py-2 transition-colors flex-shrink-0"
+        >
+          <ShoppingBag size={14} />
+          Tienda
+        </a>
+
         {/* Hamburguesa móvil */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-white p-1"
+          className="md:hidden text-white p-1 ml-2 flex-shrink-0"
           aria-label="Menú"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -95,16 +106,6 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a
-            href={TIENDA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-3 flex items-center justify-center gap-2 bg-accent text-white font-bold text-sm px-4 py-3"
-          >
-            <ShoppingBag size={15} />
-            Ir a la tienda
-          </a>
         </div>
       )}
     </header>
