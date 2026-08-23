@@ -58,7 +58,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mt-5">
               {[
                 { Icon: IconInstagram, href: 'https://www.instagram.com/calzacaribe_baq/', label: 'Instagram' },
-                { Icon: IconFacebook, href: '#', label: 'Facebook' },
+                { Icon: IconFacebook, href: 'https://www.facebook.com/share/19awX8nE69/', label: 'Facebook' },
                 { Icon: IconTikTok, href: 'https://www.tiktok.com/@calzacaribe_baq', label: 'TikTok' },
                 { Icon: IconWhatsApp, href: 'https://wa.me/573015097013', label: 'WhatsApp' },
               ].map(({ Icon, href, label }) => (
