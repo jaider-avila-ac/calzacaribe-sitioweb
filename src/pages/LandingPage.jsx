@@ -17,11 +17,12 @@ function IconInstagram({ size = 17, className }) {
 
 /* ── Hero carousel ─────────────────────────────────────── */
 
-const SLIDES = [
-  { src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1920&q=85', href: `${TIENDA_URL}/catalogo` },
-  { src: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=1920&q=85', href: `${TIENDA_URL}/catalogo?categoria=1` },
-  { src: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1920&q=85', href: `${TIENDA_URL}/catalogo?descuento=true` },
-]
+// Los mismos banners que usa la tienda (versión WebP, 1983×793). Traen texto y un botón
+// "Comprar ahora" pegados al borde, por eso el contenedor usa su proporción exacta (sin recorte).
+const SLIDES = [1, 2, 3, 4, 5].map((n) => ({
+  src: `/banners/banner-${n}.webp`,
+  href: `${TIENDA_URL}/catalogo`,
+}))
 
 function HeroCarousel() {
   const [current, setCurrent] = useState(0)
@@ -39,7 +40,7 @@ function HeroCarousel() {
   const next = () => go((current + 1) % SLIDES.length)
 
   return (
-    <div className="relative w-full overflow-hidden aspect-[16/6]">
+    <div className="relative w-full overflow-hidden aspect-[1983/793]">
       {SLIDES.map(({ src, href }, i) => {
         const offset = (i - current + SLIDES.length) % SLIDES.length
         const x = offset === 0 ? 0 : offset === SLIDES.length - 1 ? -100 : 100
